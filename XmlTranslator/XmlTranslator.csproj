@@ -42,18 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Non_PO_Invoice\ApproversList.cs" />
-    <Compile Include="Non_PO_Invoice\Invoice.cs" />
-    <Compile Include="Non_PO_Invoice\Item.cs" />
-    <Compile Include="Non_PO_Invoice\LineItem.cs" />
+    <Compile Include="Data\FileAccess.cs" />
+    <Compile Include="Models\ApproversList.cs" />
+    <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\LineItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

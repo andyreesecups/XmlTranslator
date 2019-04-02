@@ -13,14 +13,9 @@ namespace XmlTranslator
     {
         static void Main(string[] args)
         {
-                XmlSerializer serializer = new XmlSerializer(typeof(Invoice));
-                Invoice invoice = new Invoice();
-
-                using (FileStream fileStream = new FileStream(@"C:\temp\Non_PO_Invoice.xml", FileMode.Open))
-                {
-                    invoice = (Invoice)serializer.Deserialize(fileStream);
-                }
-
+            Invoice invoice = new Invoice();
+            // Call DeserializeToObject Function
+            Data.FileAccess.DeserializeToObject(out invoice);
         }
     }
 }
