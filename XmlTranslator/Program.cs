@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 using XmlTranslator.Models;
 
 namespace XmlTranslator
@@ -14,8 +8,16 @@ namespace XmlTranslator
         static void Main(string[] args)
         {
             Invoice invoice = new Invoice();
+            string Message = "";
+
             // Call DeserializeToObject Function
             Data.FileAccess.DeserializeToObject(out invoice);
+
+            // Call Data Access function to insert data into the database
+            if(Data.DataAccess.InsertDataToDatabase(invoice, out Message) == false)
+            {
+                Console.WriteLine("An error occurred in the Data Access call " + Message);
+            }
         }
     }
 }

@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DataAccess.cs" />
     <Compile Include="Data\FileAccess.cs" />
     <Compile Include="Models\ApproversList.cs" />
     <Compile Include="Models\Invoice.cs" />
