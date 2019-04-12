@@ -14,9 +14,15 @@ namespace XmlTranslator
             Data.FileAccess.DeserializeToObject(out invoice);
 
             // Call Data Access function to insert data into the database
+            // If InsertDataToDatabase function fails send failed XML acknowledgment 
+            // Else send success XML acknowledgment
             if(Data.DataAccess.InsertDataToDatabase(invoice, out Message) == false)
             {
-                Console.WriteLine("An error occurred in the Data Access call " + Message);
+                Data.FileAccess.FailedXMLMessage(invoice);
+            }
+            else
+            {
+                Data.FileAccess.SuccessXMLMessage(invoice);
             }
         }
     }
