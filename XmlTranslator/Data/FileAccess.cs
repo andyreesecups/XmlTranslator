@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 using XmlTranslator.Models;
 
@@ -19,62 +20,46 @@ namespace XmlTranslator.Data
             }
         }
 
-        // Write Success Acknowledgement to given path
-        public static void WriteSuccessAcknowledgment(string xml)
+        // XMLWriter to create Success Acknowledgment XML
+        public static string XMLSuccessMessageWriter(Invoice invoice)
         {
-            string saveDirectory = @"C:\temp\EskerXML";
-
-            Directory.CreateDirectory(saveDirectory);
-
-            using (StreamWriter sw = new StreamWriter(@"C:\temp\EskerXML\SuccessAcknowledgment.xml"))
+            XmlWriterSettings settings = new XmlWriterSettings
             {
-                sw.Write(xml);
+                Indent = true,
+                NewLineOnAttributes = true
+            };
+
+            using (XmlWriter writer = XmlWriter.Create(@"C:\temp\EskerXML\FailedAcknowledgment.xml", settings))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("ERPack");
+                writer.WriteElementString("EskerInvoiceID", invoice.RUID);
+                writer.WriteElementString("ERPID", invoice.InvoiceNumber);
+                writer.WriteEndElement();
+
+                return writer.ToString();
             }
         }
 
-        // Write Failed Acknowledgment to given path
-        public static void WriteFailedAcknowledgment(string xml)
+        // XMLWriter to create Error Acknowledgment XML
+        public static string XMLErrorMessageWriter(Invoice invoice)
         {
-            string saveDirectory = @"C:\temp\EskerXML";
-
-            Directory.CreateDirectory(saveDirectory);
-
-            using (StreamWriter sw = new StreamWriter(@"C:\temp\EskerXML\FailedAcknowledgment.xml"))
+            XmlWriterSettings settings = new XmlWriterSettings
             {
-                sw.Write(xml);
+                Indent = true,
+                NewLineOnAttributes = true
+            };
+
+            using (XmlWriter writer = XmlWriter.Create(@"C:\temp\EskerXML\FailedAcknowledgment.xml", settings))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("ERPack");
+                writer.WriteElementString("ERPPostingError", invoice.RUID);
+                writer.WriteElementString("ERPID", "ERP Error");
+                writer.WriteEndElement();
+
+                return writer.ToString();
             }
-        }
-
-        // Use StringBuilder to generate success message
-        public static string SuccessXMLMessage(Invoice invoice)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine("<?xml version='1.0' encoding='utf - 8'?>");
-            sb.AppendLine("<ERPAck>");
-            sb.AppendLine("<EskerInvoiceID>").Append(invoice.RUID).AppendLine("</EskerInvoiceID>");
-            sb.AppendLine("<ERPID>").Append(invoice.InvoiceNumber).AppendLine("</ERPID>");
-            sb.Append("</ERPAck>");
-
-            WriteSuccessAcknowledgment(sb.ToString());
-
-            return sb.ToString();
-        }
-
-        // Use StringBuilder to generate failed message
-        public static string FailedXMLMessage(Invoice invoice)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine("<?xml version='1.0' encoding='utf - 8'?>");
-            sb.AppendLine("<ERPAck>");
-            sb.AppendLine("<ERPPostingError>").Append(invoice.RUID).AppendLine("</ERPPostingError>");
-            sb.AppendLine("<ERPID>").Append("ERP Error").AppendLine("</ERPID>");
-            sb.Append("</ERPAck>");
-
-            WriteFailedAcknowledgment(sb.ToString());
-
-            return sb.ToString();
         }
     }
 }

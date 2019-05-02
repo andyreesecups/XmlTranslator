@@ -1,7 +1,7 @@
-C:\Users\Andy Reese\Desktop\Visual Studio\XmlTranslator\XmlTranslator\obj\Debug\XmlTranslator.csprojResolveAssemblyReference.cache
 C:\Users\Andy Reese\Desktop\Visual Studio\XmlTranslator\XmlTranslator\obj\Debug\XmlTranslator.csproj.CoreCompileInputs.cache
 C:\Users\Andy Reese\Desktop\Visual Studio\XmlTranslator\XmlTranslator\bin\Debug\XmlTranslator.exe.config
 C:\Users\Andy Reese\Desktop\Visual Studio\XmlTranslator\XmlTranslator\bin\Debug\XmlTranslator.exe
 C:\Users\Andy Reese\Desktop\Visual Studio\XmlTranslator\XmlTranslator\bin\Debug\XmlTranslator.pdb
 C:\Users\Andy Reese\Desktop\Visual Studio\XmlTranslator\XmlTranslator\obj\Debug\XmlTranslator.exe
 C:\Users\Andy Reese\Desktop\Visual Studio\XmlTranslator\XmlTranslator\obj\Debug\XmlTranslator.pdb
+C:\Users\Andy Reese\Desktop\Visual Studio\XmlTranslator\XmlTranslator\obj\Debug\XmlTranslator.csprojAssemblyReference.cache

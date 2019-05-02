@@ -13,17 +13,11 @@ namespace XmlTranslator
             // Call DeserializeToObject Function
             Data.FileAccess.DeserializeToObject(out invoice);
 
-            // Call Data Access function to insert data into the database
-            // If InsertDataToDatabase function fails send failed XML acknowledgment 
-            // Else send success XML acknowledgment
-            if(Data.DataAccess.InsertDataToDatabase(invoice, out Message) == false)
-            {
-                Data.FileAccess.FailedXMLMessage(invoice);
-            }
-            else
-            {
-                Data.FileAccess.SuccessXMLMessage(invoice);
-            }
+            // Call XMLSuccessMessageWriter
+            Data.FileAccess.XMLSuccessMessageWriter(invoice);
+
+            // Call XMLErrorMessageWriter
+            Data.FileAccess.XMLErrorMessageWriter(invoice);
         }
     }
 }
