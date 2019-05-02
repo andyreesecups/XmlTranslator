@@ -1,1 +1,1 @@
-# XmlTranslator
+This is a prototype of an integration where I receive an XML document, deserialize and store it into an object, and insert some of those properties into a database. The XML document represents an invoice that is posted in an order management software and is then inserted into an ERP.
